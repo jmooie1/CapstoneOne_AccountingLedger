@@ -16,10 +16,13 @@ public class Ledger {
         transactions = new ArrayList<>();
     }
 
+    // This is a method to add a transaction to the ledger.
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
+    }
 
-
-
-
-
-
+    // This is a method to retrieve all the transactions from the ledger.
+    public List<Transaction> getAllTransactions() {
+        return transactions;
+    }
 }
