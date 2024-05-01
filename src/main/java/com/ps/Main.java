@@ -28,16 +28,45 @@ public class Main {
            System.out.println("Choose your option: ");
 
            // This reads the user input for choice.
-            String choice = scanner.nextLine();
+            String choice = scanner.nextLine().toUpperCase();
             switch (choice) {
+                case "D":
+                    // This calls the addDeposit method to add a deposit transaction
 
 
            }
        } while (!exit);
     }
 
+    // This is a method to add a deposit transaction.
+    public static void addDeposit(Scanner scanner, Ledger ledger) {
+        System.out.println("Please enter the details of your deposit: ");
+        System.out.print("Date (yyyy-MM-dd): ");;
+        String date = scanner.nextLine();
+
+        System.out.print("Time (HH:mm:ss): ");
+        String time = scanner.nextLine();
+
+        System.out.print("Description: ");
+        String description = scanner.nextLine();
+
+        System.out.print("Vendor: ");
+        String vendor = scanner.nextLine();
+
+        System.out.print("Amount: ");
+        double amount = scanner.nextDouble();
+
+
+
+
+
+    }
+
+    // Method to display all the transactions in the ledger
     public static void displayLedger(Ledger ledger) {
 
+            // Retrieves all the transactions from the ledger.
+            List<Transaction> transactions = ledger.getAllTransactions();
     }
 
 

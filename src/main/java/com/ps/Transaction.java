@@ -6,7 +6,7 @@ public class Transaction {
     private String time; // Time of transaction
     private String description; // Description of the transaction
     private String vendor; // Vendor involved inside the transaction
-    private double amount; //Time of the transaction
+    private double amount; // Time of the transaction
 
     // A constructor to initialize a transaction.
     public Transaction(String date, String time, String description, String vendor, double amount) {
