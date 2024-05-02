@@ -132,8 +132,8 @@ public class Main {
             case 4: // Logic for Previous Year report
                 break;
             case 5: // Logic for Search by Vendor report
-                System.out.print("Enter vendor name: ");
-                scanner.nextLine(); // Clears the buffer
+                System.out.print("Enter vendor's name: ");
+                scanner.nextLine(); // Creates a newLine
                 String vendor = scanner.nextLine();
                 System.out.println("Transactions for Vendor " + vendor + ":");
                 for (String transaction : transactions) {
@@ -146,12 +146,12 @@ public class Main {
             case 0:
                 break;
             default:
-                System.out.println("Invalid choice!");
+                System.out.println("Invalid choice. Try again.");
         }
     }
 
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         // Scanner used to read user input.
         Scanner scanner = new Scanner(System.in); // Creating Scanner object for user input.
 
@@ -226,5 +226,5 @@ public class Main {
         } while (choice != 'X'); // Loop until the user chooses to exit.
 
         scanner.close(); // Closes the scanner object.
-        }
     }
+}

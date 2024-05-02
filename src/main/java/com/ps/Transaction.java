@@ -68,6 +68,6 @@ public class Transaction {
     // Method to read the transaction as being readable for a human being.
     @Override
     public String toString() {
-    return "Date: " + date + "Time:" + time + ", Description: " + description + ", Vendor: " + vendor + ", Amount: " + amount;
+        return "Date: " + date + "Time:" + time + ", Description: " + description + ", Vendor: " + vendor + ", Amount: " + amount;
     }
 }
