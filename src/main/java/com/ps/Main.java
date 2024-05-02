@@ -1,6 +1,6 @@
 package com.ps;
 
-import java.sql.Array;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -109,39 +109,82 @@ public class Main {
         System.out.println("The payment (Debit) has been made successfully!");
         }
 
-    public static void main(String[] args) {
+        // Method to generate predefined reports.
+        public static void generateReports(List<String> transactions, Scanner scanner) {}
+
+        public static void main(String[] args) {
         // Scanner used to read user input.
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); // Creating Scanner object for user input.
 
-        List<String> transactions = readTransactions();
-
-
+        List<String> transactions = readTransactions(); // Initializes ledger with transactions from a TXT file.
         char choice; // This declares a variable to store the user's choice.
+
         // Using a main do-while loop to display all the options and to handle user input.
         do {
             // Display the home menu options
-            System.out.println("Welcome to the Main Menu");
-            System.out.println("D) Add Deposit");
-            System.out.println("P) Make Payment (Debit)");
-            System.out.println("L) Ledger");
-            System.out.println("X) Exit");
+            displayHomeScreen(); // Displays the home screen options.
+            System.out.print("Enter your choice: "); // Prompts the user for choice.
 
-            System.out.print("Choose your option: "); // This prompts the user to enter a choice
             choice = scanner.next().charAt(0); // This reads the user's choice.
             switch (choice) { // This performs actions based on the user's choice.
-                case 'D':
-                    addDeposit(scanner, ledger); // This is an option to add a deposit.
+                case 'D': // If user chooses to add deposit.
+                    addDeposit(scanner, transactions); // This is an option to add a deposit.
                     break;
-                case 'P':
-                    makePayment(scanner,ledger); // This is the option to make a payment.
+                case 'P': // If user chooses to make payment.
+                    makePayment(scanner, transactions); // This is the option to make a payment.
                     break;
-                case 'L':
-                    displayLedger(ledger); // Option to display ledger
+                case 'L': // If the user chooses to view ledger.
+                    // Ledger screen loop
+                    char ledgerChoice; // Variable to store user choice for ledger options.
+                    do {
+                        displayLedgerOptions(); // Displays the ledger options
+                        System.out.print("Enter your choice: "); // Prompts the user for choice.
+                        ledgerChoice = scanner.next().charAt(0); // Reading the user choice for ledger.
+                        switch (ledgerChoice) {
+                            case 'A': // If user chooses to view all transactions
+                                System.out.print("All transactions: "); // Displays the label for all transactions.
+                                for (String transaction : transactions) { // Loops through all transactions
+                                    System.out.println(transaction); // Prints through each transaction.
+                                }
+                                break;
+                            case 'D': // If user chooses to view deposits.
+                                System.out.println("Deposits:"); // Displays the label for deposits.
+                                for (String transaction : transactions) { // Loops through all the transactions.
+                                    String[] parts = transaction.split("\\|"); // Splitting transaction string into parts.
+                                    double amount = Double.parseDouble(parts[4]); // Parses the amount from transactions.
+                                    if (amount > 0) { // If amount is positive (deposit)
+                                        System.out.println(transaction); // Prints the deposit transaction.
+                                    }
+                                }
+                                break;
+                            case 'P': // If user chooses to view payments (debits)
+                                System.out.println("Payments (Debits):"); // Displaying label for payments
+                                for (String transaction : transactions) { // Looping through all transactions
+                                    String[] parts = transaction.split("\\|"); // Splitting transaction string into parts
+                                    double amount = Double.parseDouble(parts[4]); // Parses the amount from transaction
+                                    if (amount < 0) { // If amount is negative (payment)
+                                        System.out.println(transaction); // Prints the payment transaction.
+                                    }
+                                }
+                                break;
+                            case 'R': // If user chooses to view the reports
+                                break;
+
+                            case 'H': // If user chooses to go back to the home screen.
+                                break;
+                            default:
+                                System.out.println("Invalid choice!, try again."); // Displays message for invalid input.
+                        }
+                    } while (ledgerChoice != 'H'); // This continues the loop until user chooses to go back to home screen.
+                    break;
+                case 'X': // If user chooses to exit the app.
+                    System.out.println("Exiting the application..."); // Displays the exit message.
                     break;
                 default:
-                    System.out.println("Invalid choice!, try again."); // Displays message for invalid input.
+                    System.out.println("Invalid. Try again."); // If the user enters invalid choice.
             }
-        } while (choice != 'X'); // This continues the loop until user chooses to exit.
-    }
+        } while (choice != 'X'); // Loop until the user chooses to exit.
 
+        scanner.close(); // Closes the scanner object.
+        }
     }
