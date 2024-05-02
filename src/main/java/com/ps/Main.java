@@ -190,6 +190,7 @@ public class Main {
                                 System.out.println("Deposits:"); // Displays the label for deposits.
                                 for (String transaction : transactions) { // Loops through all the transactions.
                                     String[] parts = transaction.split("\\|"); // Splitting transaction string into parts.
+                                    System.out.println("Transaction amount string: " + parts[4]);
                                     double amount = Double.parseDouble(parts[4]); // Parses the amount from transactions.
                                     if (amount > 0) { // If amount is positive (deposit)
                                         System.out.println(transaction); // Prints the deposit transaction.
