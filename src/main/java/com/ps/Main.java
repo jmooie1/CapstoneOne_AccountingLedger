@@ -9,38 +9,38 @@ import java.io.*;
 
 public class Main {
 
-   // This is a method to display the home screen options
-        public static void displayHomeScreen() {
-            System.out.println("Home Screen:"); // Displays header for home screen.
-            System.out.println("D) Add Deposit"); // Displays option to add a deposit.
-            System.out.println("P) Make Payment (Debit)"); // Displays the option to make a payment.
-            System.out.println("L) Ledger"); // Displaying the option to view the ledger.
-            System.out.println("X) Exit"); // Displays the option to exit the application.
-        }
+    // This is a method to display the home screen options
+    public static void displayHomeScreen() {
+        System.out.println("Home Screen:"); // Displays header for home screen.
+        System.out.println("D) Add Deposit"); // Displays option to add a deposit.
+        System.out.println("P) Make Payment (Debit)"); // Displays the option to make a payment.
+        System.out.println("L) Ledger"); // Displaying the option to view the ledger.
+        System.out.println("X) Exit"); // Displays the option to exit the application.
+    }
 
-        public static void displayLedgerOptions() {
-            System.out.println("Ledger Screen:"); // Displays the header for the ledger screen.
-            System.out.println("A) All"); // Displays the option to view all the transactions.
-            System.out.println("D) Deposits"); // Displays the option to view only deposits.
-            System.out.println("P) Make Payment (Debit)"); // Displays the option to make a payment.
-            System.out.println("R) Reports"); // Displays the option to view reports.
-            System.out.println("H) Home"); // Displays the option to return to the home screen.
-        }
+    public static void displayLedgerOptions() {
+        System.out.println("Ledger Screen:"); // Displays the header for the ledger screen.
+        System.out.println("A) All"); // Displays the option to view all the transactions.
+        System.out.println("D) Deposits"); // Displays the option to view only deposits.
+        System.out.println("P) Make Payment (Debit)"); // Displays the option to make a payment.
+        System.out.println("R) Reports"); // Displays the option to view reports.
+        System.out.println("H) Home"); // Displays the option to return to the home screen.
+    }
 
-        public static List<String> readTransactions() {
-            List<String> transactions = new ArrayList<>(); // Creates a new list to store transactions.
-            try (BufferedReader br = new BufferedReader(new FileReader("transactions.txt"))) { // Opens the file to read.
-                String line; // Variable to store each line read from the file.
-                while ((line = br.readLine()) != null) { // Reading each line until end of file
-                    transactions.add(line); // Adds each transaction to the list.
-                }
-            } catch (IOException e) { // Handles the Exception
-                e.printStackTrace(); // This prints the stack trace for the exception.
+    public static List<String> readTransactions() {
+        List<String> transactions = new ArrayList<>(); // Creates a new list to store transactions.
+        try (BufferedReader br = new BufferedReader(new FileReader("transactions.txt"))) { // Opens the file to read.
+            String line; // Variable to store each line read from the file.
+            while ((line = br.readLine()) != null) { // Reading each line until end of file
+                transactions.add(line); // Adds each transaction to the list.
             }
-            return transactions; // This returns the list of transactions.
+        } catch (IOException e) { // Handles the Exception
+            e.printStackTrace(); // This prints the stack trace for the exception.
         }
+        return transactions; // This returns the list of transactions.
+    }
 
-     // This calls the addDeposit method to add a deposit transaction
+    // This calls the addDeposit method to add a deposit transaction
     public static void addDeposit(Scanner scanner, List<String> transactions) {
         System.out.println("Adding deposit.."); // This informs the user about the action
 
@@ -107,10 +107,49 @@ public class Main {
 
         // This informs the user about a successful payment.
         System.out.println("The payment (Debit) has been made successfully!");
-        }
+    }
 
-        // Method to generate predefined reports.
-        public static void generateReports(List<String> transactions, Scanner scanner) {}
+    // Method to generate predefined reports.
+    public static void generateReports(List<String> transactions, Scanner scanner) {
+        System.out.println("Reports:"); // Displays the header for the reports.
+        System.out.println("1) Month to Date"); // Displays the option for Month to Date report.
+        System.out.println("2) Previous Month");  // Displays the option for Previous Month report.
+        System.out.println("3) Year To Date"); // Displays the option for Year to Date report.
+        System.out.println("4) Previous Year"); // Displays the option for Previous Year report.
+        System.out.println("5) Search by Vendor"); // Displays the option for Search by Vendor report.
+        System.out.println("0) Back"); // Displays the option to go back.
+
+        System.out.print("Enter your choice: "); // Prompts the user to enter their choice
+        int reportChoice = scanner.nextInt();
+
+        switch (reportChoice) { // Perform actions based on the user's choice
+            case 1: // Logic for Month to Date report
+                break;
+            case 2: // Logic for Previous Month report
+                break;
+            case 3: // Logic for Year to Date report
+                break;
+            case 4: // Logic for Previous Year report
+                break;
+            case 5: // Logic for Search by Vendor report
+                System.out.print("Enter vendor name: ");
+                scanner.nextLine(); // Clears the buffer
+                String vendor = scanner.nextLine();
+                System.out.println("Transactions for Vendor " + vendor + ":");
+                for (String transaction : transactions) {
+                    String[] parts = transaction.split("\\|");
+                    if (parts[3].trim().equalsIgnoreCase(vendor.trim())) {
+                        System.out.println(transaction);
+                    }
+                }
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+    }
+
 
         public static void main(String[] args) {
         // Scanner used to read user input.
@@ -168,8 +207,8 @@ public class Main {
                                 }
                                 break;
                             case 'R': // If user chooses to view the reports
+                                generateReports(transactions, scanner);// Option to generate the reports.
                                 break;
-
                             case 'H': // If user chooses to go back to the home screen.
                                 break;
                             default:
