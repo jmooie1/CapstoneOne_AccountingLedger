@@ -15,15 +15,15 @@ public class Main {
 
         char choice; // This declares a variable to store the user's choice.
         // Using a main do-while loop to display all the options and to handle user input.
-       do {
-           // Display the home menu options
-           System.out.println("Welcome to the Main Menu");
-           System.out.println("D) Add Deposit");
-           System.out.println("P) Make Payment (Debit)");
-           System.out.println("L) Ledger");
-           System.out.println("X) Exit");
+        do {
+            // Display the home menu options
+            System.out.println("Welcome to the Main Menu");
+            System.out.println("D) Add Deposit");
+            System.out.println("P) Make Payment (Debit)");
+            System.out.println("L) Ledger");
+            System.out.println("X) Exit");
 
-           System.out.print("Choose your option: "); // This prompts the user to enter a choice
+            System.out.print("Choose your option: "); // This prompts the user to enter a choice
             choice = scanner.next().charAt(0); // This reads the user's choice.
             switch (choice) { // This performs actions based on the user's choice.
                 case 'D':
@@ -31,16 +31,17 @@ public class Main {
                     break;
                 case 'P':
 
-           }
-       } while (choice != 'X'); // This continues the loop until user chooses to exit.
+            }
+        } while (choice != 'X'); // This continues the loop until user chooses to exit.
     }
 
-    // // This calls the addDeposit method to add a deposit transaction
+     // This calls the addDeposit method to add a deposit transaction
     public static void addDeposit(Scanner scanner, Ledger ledger) {
         System.out.println("Adding deposit.."); // This informs the user about the action
 
         // This prompts the user to enter the date of the deposit.
-        System.out.print("Enter the date - (YYYY-MM-DD): ");;
+        System.out.print("Enter the date - (YYYY-MM-DD): ");
+        ;
         String date = scanner.nextLine();
 
         // This prompts the user to enter the time of the deposit.
@@ -60,23 +61,30 @@ public class Main {
         double amount = scanner.nextDouble();
 
         // This constructs the transaction details string.
-        String transactionDetails = date + " | " + time + " | " + description + " | " + vendor + " | " + amount;
+        String transactionDetails = (date + " | " + time + " | " + description + " | " + vendor + " | " + amount);
 
         // This creates a new Transaction and adds it to the ledger.
         ledger.addTransaction(transactionDetails);
 
         // This informs the user about a successful addition.
-        System.out.println("The deposit has been added successfully, congrats.");
+        System.out.println("The deposit has been made successfully, congrats.");
     }
 
     // Method to display all the transactions in the ledger
     public static void displayLedger(Ledger ledger) {
+        System.out.println("Displaying ledger..."); // This informs the user about the action of displaying a ledger.
+        // Retrieves all the transactions from the ledger.
+        List<String> transactions = ledger.getAllTransactions();
+        if (transactions.isEmpty()) {
+            System.out.println("None of the transactions have been recorded yet."); // This informs the user if the ledger is empty.
+        } else {
+            // Display transactions
+            System.out.println("Transactions:");
+            for (String transaction : transactions) { // This iterates through each transaction
+                System.out.println(transaction); // This displays the transaction details.
+            }
+        }
 
-            // Retrieves all the transactions from the ledger.
-            List<String> transactions = ledger.getAllTransactions();
+
     }
-
-
-
-
 }
