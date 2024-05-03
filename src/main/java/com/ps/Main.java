@@ -46,19 +46,19 @@ public class Main {
 
         // This prompts the user to enter the date of the deposit.
         System.out.print("Enter the date - (yyyy-MM-dd): ");
-        String date = scanner.nextLine();
+        String date = scanner.next();
 
         // This prompts the user to enter the time of the deposit.
         System.out.print("Enter the time - (HH:mm:ss): ");
-        String time = scanner.nextLine();
+        String time = scanner.next();
 
         // This prompts the user to enter the description of the deposit
         System.out.print("Enter the description: ");
-        String description = scanner.nextLine();
+        String description = scanner.next();
 
         // This prompts the user to enter the vendor of the deposit.
         System.out.print("Enter the vendor name: ");
-        String vendor = scanner.nextLine();
+        String vendor = scanner.next();
 
         // Prompting the user to enter the amount of the deposit.
         System.out.print("Enter the amount: ");
@@ -81,19 +81,19 @@ public class Main {
 
         // This prompts the user to enter the date of the deposit.
         System.out.print("Enter the date - (yyyy-MM-dd): ");
-        String date = scanner.nextLine();
+        String date = scanner.next();
 
         // This prompts the user to enter the time of the deposit.
         System.out.print("Enter the time - (HH:mm:ss): ");
-        String time = scanner.nextLine();
+        String time = scanner.next();
 
         // This prompts the user to enter the description of the deposit
         System.out.print("Enter the description: ");
-        String description = scanner.nextLine();
+        String description = scanner.next();
 
         // This prompts the user to enter the vendor of the deposit.
         System.out.print("Enter the vendor name: ");
-        String vendor = scanner.nextLine();
+        String vendor = scanner.next();
 
         // Prompting the user to enter the amount of the deposit.
         System.out.print("Enter the amount: ");
@@ -133,12 +133,17 @@ public class Main {
                 break;
             case 5: // Logic for Search by Vendor report
                 System.out.print("Enter vendor's name: ");
-                scanner.nextLine(); // Creates a newLine.
+                scanner.nextLine(); // Creates a newLine
                 String vendor = scanner.nextLine();
-                System.out.println("Transactions for Vendor " + vendor + ":"); // Displays the header for transactions.
-                for (String transaction : transactions) { // This iterates through each transaction in the list.
-                    String[] parts = transaction.split("\\|"); // This splits the transaction string into parts using "|" as a delimiter
-                    if (parts[3].trim().equalsIgnoreCase(vendor.trim())) { // It checks the vendor name matches the user input.
+
+                System.out.println("Transactions for Vendor " + vendor + ":");
+
+                // Iterates through each transaction in list
+                for (String transaction : transactions) {
+                    String[] parts = transaction.split("\\|"); // Delimiter split
+
+                    // This checks if the vendor name in the transaction matches the entered vendor name.
+                    if (parts[3].trim().equalsIgnoreCase(vendor.trim())) { // If the vendor names match (which also ignores case) it executes the following code after.
                         System.out.println(transaction);
                     }
                 }

@@ -2,11 +2,11 @@ package com.ps;
 
 public class Transaction {
     // These are properties inside of transaction
-    private String date; // Date of transaction
-    private String time; // Time of transaction
-    private String description; // Description of the transaction
-    private String vendor; // Vendor involved inside the transaction
-    private double amount; // Time of the transaction
+    public String date; // Date of transaction
+    public String time; // Time of transaction
+    public String description; // Description of the transaction
+    public String vendor; // Vendor involved inside the transaction
+    public double amount; // Time of the transaction
 
     // A constructor to initialize a transaction.
     public Transaction(String date, String time, String description, String vendor, double amount) {

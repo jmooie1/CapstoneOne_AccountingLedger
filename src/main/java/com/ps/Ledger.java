@@ -15,9 +15,9 @@ public class Ledger {
     }
 
     // This is a method to add a transaction to the ledger.
-    public void addTransaction(String transactionDetails) {
+    public void addTransaction(String transaction) {
         // This adds transaction details to the ledger.
-        transactions.add(transactionDetails);
+        transactions.add(transaction);
     }
 
     // This is a method to retrieve all the transactions from the ledger.
