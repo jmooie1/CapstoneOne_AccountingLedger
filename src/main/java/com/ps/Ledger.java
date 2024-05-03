@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Ledger {
     // This is a list to store all the transactions.
-    private List<String> transactions;
+    private final List<String> transactions;
 
     // This is a constructor to initialize a Ledger with an empty list of transactions.
     public Ledger() {

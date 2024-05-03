@@ -133,12 +133,12 @@ public class Main {
                 break;
             case 5: // Logic for Search by Vendor report
                 System.out.print("Enter vendor's name: ");
-                scanner.nextLine(); // Creates a newLine
+                scanner.nextLine(); // Creates a newLine.
                 String vendor = scanner.nextLine();
-                System.out.println("Transactions for Vendor " + vendor + ":");
-                for (String transaction : transactions) {
-                    String[] parts = transaction.split("\\|");
-                    if (parts[3].trim().equalsIgnoreCase(vendor.trim())) {
+                System.out.println("Transactions for Vendor " + vendor + ":"); // Displays the header for transactions.
+                for (String transaction : transactions) { // This iterates through each transaction in the list.
+                    String[] parts = transaction.split("\\|"); // This splits the transaction string into parts using "|" as a delimiter
+                    if (parts[3].trim().equalsIgnoreCase(vendor.trim())) { // It checks the vendor name matches the user input.
                         System.out.println(transaction);
                     }
                 }
